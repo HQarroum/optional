@@ -15,6 +15,11 @@ The `optional` pattern makes it possible to manipulate values that may, or may n
 Imagine that you would like to override the behaviour of the `atoi` function so that it does not return the misleading `0` value if the input string is invalid, but a not-an-int value instead. Here is how you would do that using `optional` :
 
 ```c++
+/**
+ * \return an optional integer which contains the integer
+ * value extracted from the given string on success, a not
+ * a number value otherwise.
+ */
 Optional<int> my_atoi(const char* value)
 {
   int nb = atoi(value);
@@ -23,5 +28,16 @@ Optional<int> my_atoi(const char* value)
     return Optional<int>();
   }
   return (nb);
+}
+
+int main() {
+  auto value = my_atoi("123");
+  
+  if (value) {
+    printf("The value is %d\n", value.get());
+  } else {
+    printf("The value is not a number\n");
+  }
+  return (0);
 }
 ```
