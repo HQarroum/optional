@@ -16,16 +16,18 @@ Imagine that you would like to override the behaviour of the `atoi` function so 
 
 ```c++
 /**
- * \return an optional integer which contains the integer
+ * \return an optional long integer which contains the integer
  * value extracted from the given string on success, a not
  * a number value otherwise.
  */
-Optional<int> my_atoi(const char* value)
+Optional<long int> my_atoi(const char* value)
 {
-  int nb = atoi(value);
+  long int nb = strtol(value, NULL, 10);
   
-  if (nb == 0) {
-    return Optional<int>();
+  if (nb == 0
+    || nb == LONG_MAX
+    || nb == LONG_MIN) {
+    return Optional<long int>();
   }
   return (nb);
 }
@@ -34,7 +36,7 @@ int main() {
   auto value = my_atoi("123");
   
   if (value) {
-    printf("The value is %d\n", value.get());
+    printf("The value is %ld\n", value.get());
   } else {
     printf("The value is not a number\n");
   }
