@@ -22,7 +22,7 @@ Imagine that you would like to override the behaviour of the `atoi` function so 
  */
 Optional<long int> my_atoi(const char* value)
 {
-  long int nb = strtol(value, NULL, 10);
+  auto nb = strtol(value, NULL, 10);
   
   if (nb == 0
     || nb == LONG_MAX
@@ -32,7 +32,8 @@ Optional<long int> my_atoi(const char* value)
   return (nb);
 }
 
-int main() {
+int main()
+{
   auto value = my_atoi("123");
   
   if (value) {
