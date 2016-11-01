@@ -1,6 +1,5 @@
-# optional
-
-An implementation of the C++14 optional pattern.
+# Optional
+> An implementation of the C++14 optional pattern.
 
 Current version: **1.0.0**
 
