@@ -1,5 +1,5 @@
 # Optional
-> An implementation of the C++14 optional pattern.
+> An implementation of the C++17 optional pattern.
 
 ![Production ready](https://img.shields.io/badge/Production-Ready-brightgreen.svg)
 
@@ -9,7 +9,7 @@ Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
 ## Description
 
-This project consists of a header-only file containing a minimalist implementation of the `optional` pattern introduced by the C++14 standard library. The `optional` pattern makes it possible to manipulate values that may, or may not be available and provides therefore the appropriate semantics to deal with optional values in a type-safe manner.
+This project consists of a header-only file containing a minimalist implementation of the `optional` pattern introduced by the C++17 standard library. The `optional` pattern makes it possible to manipulate values that may, or may not be available and provides therefore the appropriate semantics to deal with optional values in a type-safe manner.
 
 ## Example
 
