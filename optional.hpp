@@ -1,9 +1,7 @@
 #ifndef OPTIONAL_H
 #define OPTIONAL_H
 
-#include <utility>
 #include <type_traits>
-#include <iostream>
 
 namespace experimental {
   
