@@ -13,7 +13,7 @@ This project consists of a header-only file containing a minimalist implementati
 
 ## Example
 
-Imagine that you would like to override the behaviour of the `atoi` function so that it does not return a misleading `0` value if the input string is invalid, but a not-an-int value instead. Here is how you would do that using `optional` :
+Imagine that you would like to override the behaviour of the `strtol` function so that it returns a not-an-int value if the input is invalid. Here is how you would do that using `optional` :
 
 ```c++
 /**
@@ -21,7 +21,7 @@ Imagine that you would like to override the behaviour of the `atoi` function so 
  * value extracted from the given string on success, a not
  * a number value otherwise.
  */
-Optional<long int> my_atoi(const char* value)
+Optional<long int> integer_of(const char* value)
 {
   char* ptr = nullptr;
   auto nb   = strtol(value, &ptr, 10);
@@ -35,12 +35,12 @@ Optional<long int> my_atoi(const char* value)
 
 int main()
 {
-  auto value = my_atoi("123");
+  auto value = integer_of("123");
   
   if (value) {
-    printf("The value is %ld\n", value.get());
+    std::cout << "The value is " << value.get() << std::endl;
   } else {
-    printf("The value is not a number\n");
+    std::cout << "The value is not a number" << std::endl;
   }
   return (0);
 }
