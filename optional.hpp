@@ -29,7 +29,7 @@ namespace experimental {
       Optional() : mStored(false) {}
       
       /**
-       * \brief Object constructor.
+       * \constructor.
        * \param v the object to store.
        */
       Optional(const T& v) : mStored(true) {
@@ -37,21 +37,48 @@ namespace experimental {
       }
       
       /**
-       * \brief Object copy constructor.
+       * \brief Copy constructor.
        */
-      Optional(const Optional<T>& other) {
-        mStored = other.mStored;
+      Optional(const Optional<T>& other)
+        : mStored(other.mStored) {
         if (mStored) {
           new (&storage) T(other.get());
         }
       }
       
       /**
-       * \brief Assignment operator.
+       * \brief Move constructor.
        */
-      Optional& operator=(Optional<T> other) {
-        std::swap(mStored, other.mStored);
-        std::swap(storage, other.storage);
+      Optional(Optional<T>&& other)
+        : mStored(other.mStored) {
+        if (mStored) {
+          new (&storage) T(std::move(other.get()));
+        }
+      }
+      
+      /**                                                                                                                                                                                       
+       * \brief Assignment operator.                                                                                                                                                            
+       */
+      Optional& operator=(const Optional<T>& other) {
+        if (this != &other) {
+          return (*this);
+        }
+        if (mStored = other.mStored) {
+          new (&storage) T(other.get());
+        }
+        return (*this);
+      }
+
+      /**                                                                                                                                                                                       
+       * \brief Move assignment operator.                                                                                                                                                       
+       */
+      Optional& operator=(Optional<T>&& other) {
+        if (this != &other) {
+          return (*this);
+        }
+        if (mStored = other.mStored) {
+          new (&storage) T(std::move(other.get()));
+        }
         return (*this);
       }
       
