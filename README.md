@@ -13,7 +13,7 @@ This project consists of a header-only file containing a minimalist implementati
 
 ## Example
 
-Imagine that you would like to override the behaviour of the `atoi` function so that it does not return the misleading `0` value if the input string is invalid, but a not-an-int value instead. Here is how you would do that using `optional` :
+Imagine that you would like to override the behaviour of the `atoi` function so that it does not return a misleading `0` value if the input string is invalid, but a not-an-int value instead. Here is how you would do that using `optional` :
 
 ```c++
 /**
@@ -23,11 +23,11 @@ Imagine that you would like to override the behaviour of the `atoi` function so 
  */
 Optional<long int> my_atoi(const char* value)
 {
-  auto nb = strtol(value, NULL, 10);
+  char* ptr = nullptr;
+  auto nb   = strtol(value, &ptr, 10);
   
-  if (nb == 0
-    || nb == LONG_MAX
-    || nb == LONG_MIN) {
+  if (ptr == str || *ptr != '\0'
+    || ((nb == LONG_MIN || nb == LONG_MAX) && errno == ERANGE)) {
     return Optional<long int>();
   }
   return (nb);
