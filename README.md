@@ -1,7 +1,7 @@
 # Optional
 > An implementation of the C++17 optional pattern.
 
-![Production ready](https://img.shields.io/badge/Production-Ready-brightgreen.svg)
+![Production ready](https://img.shields.io/badge/production-ready-brightgreen.svg)
 
 Current version: **1.0.0**
 
