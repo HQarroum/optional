@@ -4,7 +4,7 @@
 #include <type_traits>
 
 namespace experimental {
-  
+
   template <typename T> class Optional
     {
       /**
@@ -18,14 +18,14 @@ namespace experimental {
        * initialized.
        */
       bool mStored;
-      
+
     public:
-      
+
       /**
        * \brief Object constructor.
        */
       Optional() : mStored(false) {}
-      
+
       /**
        * \constructor.
        * \param v the object to store.
@@ -33,7 +33,7 @@ namespace experimental {
       Optional(const T& v) : mStored(true) {
         new (&storage) T(v);
       }
-      
+
       /**
        * \brief Copy constructor.
        */
@@ -43,7 +43,7 @@ namespace experimental {
           new (&storage) T(other.get());
         }
       }
-      
+
       /**
        * \brief Move constructor.
        */
@@ -53,7 +53,7 @@ namespace experimental {
           new (&storage) T(std::move(other.get()));
         }
       }
-      
+
       /**                                                                                                                                                                                       
        * \brief Assignment operator.                                                                                                                                                            
        */
@@ -79,7 +79,7 @@ namespace experimental {
         }
         return (*this);
       }
-      
+
       /**
        * \brief Object destructor.
        */
@@ -88,7 +88,7 @@ namespace experimental {
           get().~T();
         }
       }
-            
+
       /**
        * \return the currently stored optional value.
        * \note This is the const version.
@@ -96,7 +96,7 @@ namespace experimental {
       T const& get() const {
         return *static_cast<const T*>(static_cast<const void*>(&storage));
       }
-      
+
       /**
        * \return the currently stored optional value.
        * \note This is the non-const version.
