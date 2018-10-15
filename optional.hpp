@@ -1,6 +1,7 @@
-#ifndef OPTIONAL_H
-#define OPTIONAL_H
+#ifndef OPTIONAL_H_
+#define OPTIONAL_H_
 
+#include <utility>
 #include <type_traits>
 
 namespace experimental {
@@ -115,4 +116,4 @@ namespace experimental {
     };
 };
 
-#endif
+#endif // OPTIONAL_H_
