@@ -16,10 +16,6 @@ This project consists of a header-only minimalist implementation of the [optiona
 Imagine that you would like to override the behaviour of the `strtol` function so that it returns a *not-an-int* value if the input is invalid. Here is how you would do that using `Optional` :
 
 ```c++
-#include "optional.hpp"
-#include <string>
-#include <iostream>
-
 /**
  * \return an optional long integer which contains the integer
  * value extracted from the given string on success, a not
