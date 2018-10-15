@@ -25,11 +25,11 @@ Imagine that you would like to override the behaviour of the `strtol` function s
  * value extracted from the given string on success, a not
  * a number value otherwise.
  */
-static experimental::Optional<long int> integer_of(const char* value) {
+static experimental::Optional<int> integer_of(const char* value) {
   try {
     return (std::stoi(value, nullptr, 10));
   } catch (std::invalid_argument&) {
-    return experimental::Optional<long int>();
+    return experimental::Optional<int>();
   }
 }
 
