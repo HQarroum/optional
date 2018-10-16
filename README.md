@@ -13,15 +13,15 @@ This project consists of a header-only minimalist implementation of the [optiona
 
 ## Example
 
-Imagine that you would like to override the behaviour of the `strtol` function so that it returns a *not-an-int* value if the input is invalid. Here is how you would do that using `Optional` :
+Imagine that you would like to override the behaviour of the `strtol` function so that it returns a *not-an-int* value if the input is invalid. Here is how you would do that using `optional` :
 
 ```c++
 /**
- * \return an optional long integer which contains the integer
+ * \return an optional integer which holds the integer
  * value extracted from the given string on success, a not
  * a number value otherwise.
  */
-static experimental::Optional<int> integer_of(const char* value) {
+static experimental::optional<int> integer_of(const char* value) {
   try {
     return (std::stoi(value, nullptr, 10));
   } catch (std::invalid_argument&) {
