@@ -6,7 +6,7 @@
 
 namespace experimental {
 
-  template <typename T> class Optional
+  template <typename T> class optional
     {
       /**
        * \brief The internal storage of size T and
@@ -25,20 +25,20 @@ namespace experimental {
       /**
        * \brief Object constructor.
        */
-      Optional() : mStored(false) {}
+      optional() : mStored(false) {}
 
       /**
        * \constructor.
        * \param v the object to store.
        */
-      Optional(const T& v) : mStored(true) {
+      optional(const T& v) : mStored(true) {
         new (&storage) T(v);
       }
 
       /**
        * \brief Copy constructor.
        */
-      Optional(const Optional<T>& other)
+      optional(const optional<T>& other)
         : mStored(other.mStored) {
         if (mStored) {
           new (&storage) T(other.get());
@@ -48,7 +48,7 @@ namespace experimental {
       /**
        * \brief Move constructor.
        */
-      Optional(Optional<T>&& other)
+      optional(optional<T>&& other)
         : mStored(other.mStored) {
         if (mStored) {
           new (&storage) T(std::move(other.get()));
@@ -58,7 +58,7 @@ namespace experimental {
       /**                                                                                                                                                                                       
        * \brief Assignment operator.                                                                                                                                                            
        */
-      Optional& operator=(const Optional<T>& other) {
+      optional& operator=(const optional<T>& other) {
         if (this != &other) {
           return (*this);
         }
@@ -71,7 +71,7 @@ namespace experimental {
       /**                                                                                                                                                                                       
        * \brief Move assignment operator.                                                                                                                                                       
        */
-      Optional& operator=(Optional<T>&& other) {
+      optional& operator=(optional<T>&& other) {
         if (this != &other) {
           return (*this);
         }
@@ -84,7 +84,7 @@ namespace experimental {
       /**
        * \brief Object destructor.
        */
-      ~Optional() {
+      ~optional() {
         if (mStored) {
           get().~T();
         }
