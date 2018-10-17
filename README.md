@@ -1,7 +1,7 @@
 # Optional
 > An implementation of the C++17 optional pattern.
 
-![Production ready](https://img.shields.io/badge/production-ready-brightgreen.svg)
+![Experimental](https://img.shields.io/badge/status-experimental-brightgreen.svg)
 
 Current version: **1.0.0**
 
@@ -25,7 +25,7 @@ static experimental::optional<int> integer_of(const char* value) {
   try {
     return (std::stoi(value, nullptr, 10));
   } catch (std::invalid_argument&) {
-    return experimental::Optional<int>();
+    return experimental::optional<int>();
   }
 }
 
