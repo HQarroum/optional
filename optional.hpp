@@ -62,7 +62,7 @@ namespace experimental {
         if (this != &other) {
           return (*this);
         }
-        if (mStored = other.mStored) {
+        if ((mStored = other.mStored)) {
           new (&storage) T(other.get());
         }
         return (*this);
@@ -75,7 +75,7 @@ namespace experimental {
         if (this != &other) {
           return (*this);
         }
-        if (mStored = other.mStored) {
+        if ((mStored = other.mStored)) {
           new (&storage) T(std::move(other.get()));
         }
         return (*this);
